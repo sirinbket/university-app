@@ -1,35 +1,69 @@
 import "./App.css";
+import Header from "./components/Header.jsx";
+import Navbar from "./components/Navbar.jsx";
+import StudentCard from "./components/StudentCard.jsx";
+import Footer from "./components/Footer.jsx";
 import photo from "./assets/photo.png";
-const e = {
+
+const etudiants = [
+  {
   nom : "Sirine" ,
   prenom : "baraket" ,
   Email : "sirinbaraket94@gmail.com" ,
   telephone : "98754321" ,
-  Filiere : "GLSI",
-  Annee_d_etude : "2eme annee" ,
-  Groupe : " groupe 1 ",
+  filiere : "GLSI",
+  anneeEetude : "2eme annee" ,
+  groupe : " groupe 1 ",
   vile : "Mahdia",
-}
-
+  image : photo ,
+ },
+ {
+    prenom: "Aziz",
+    nom : "Trabelsi",
+    email : "aziz.trabelsi@gmail.com",
+    telephone : "+216 22 345 678",
+    filiere : "Génie Logiciel et Systèmes d'Information",
+    anneeEtude : "2ème année",
+    groupe : "GLSI 1",
+    ville : "Sousse",
+    
+  },
+  {
+    prenom: "Mariem",
+    nom: "Khalfallah",
+    email: "mariem.khalfallah@gmail.com",
+    telephone: "+216 27 567 890",
+    filiere: "Génie Logiciel et systeme d informatique",
+    anneeEtude : "2ème année",
+    groupe : "GLSI 1",
+    ville : "Sousse",
+  
+  }
+]
 function App() {
-
-
   return (
-    <div className="fiche">
-      
-      <img src={photo} alt="photo de l`etudiant"></img>  
-      <h1>Fiche Étudiant</h1>                            
-      <p>Nom : {e.nom} </p>
-      <p>Prénom : {e.prenom}</p>
-      <p>Email : {e.Email}</p>
-      <p>Téléphone : {e.telephone}</p>
-      <p>Filière : {e.Filiere}</p>
-      <p>Année d'étude : {e.Annee_d_etude} </p>
-      <p>Groupe : {e.Groupe}</p>
-      <p>Ville : {e.vile}</p>
-      
-      <a className="contact" href="mailto:sirinbaraket94@gmail.com" target="_blank" rel="noreferrer" >contact</a>
+    <div className="app">
+      <Header />
+      <Navbar />
 
+      <main className="container">
+        {etudiants.map((etudiant) => (
+          <StudentCard
+            key={etudiant.email}
+            prenom={etudiant.prenom}
+            nom={etudiant.nom}
+            email={etudiants.email}
+            telephone={etudiant.telephone}
+            filiere={etudiant.filiere}
+            anneeEtude={etudiant.anneeEtude}
+            groupe={etudiant.groupe}
+            ville={etudiant.ville}
+            image={etudiant.image}
+          />
+        ))}
+      </main>
+
+      <Footer />
     </div>
   );
 }
